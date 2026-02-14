@@ -1,0 +1,32 @@
+import { Outlet, useLocation } from 'react-router-dom'
+import { Sidebar } from './Sidebar'
+import { Topbar } from './Topbar'
+import { Breadcrumb } from '@/components/ui/breadcrumb'
+
+const breadcrumbMap = {
+  '/': [{ label: 'Dashboard' }],
+  '/users': [{ label: 'Dashboard' }, { label: 'Users' }],
+  '/roles': [{ label: 'Dashboard' }, { label: 'Roles' }],
+  '/permissions': [{ label: 'Dashboard' }, { label: 'Permissions' }],
+  '/permission-matrix': [{ label: 'Dashboard' }, { label: 'Permission Matrix' }],
+}
+
+export function AdminLayout() {
+  const location = useLocation()
+  const breadcrumbs = breadcrumbMap[location.pathname] || [{ label: 'Dashboard' }]
+
+  return (
+    <div className="flex min-h-screen bg-background text-foreground">
+      <div className="hidden md:block">
+        <Sidebar />
+      </div>
+      <div className="flex min-h-screen flex-1 flex-col">
+        <Topbar />
+        <main className="flex-1 space-y-6 p-6">
+          <Breadcrumb items={breadcrumbs} />
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  )
+}

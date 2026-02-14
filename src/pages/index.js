@@ -1,0 +1,6 @@
+export { DashboardHomePage } from '@/features/dashboard/DashboardHomePage'
+export { UsersPage } from '@/features/users/UsersPage'
+export { RolesPage } from '@/features/roles/RolesPage'
+export { PermissionsPage } from '@/features/permissions/PermissionsPage'
+export { PermissionMatrixPage } from '@/features/permissions/PermissionMatrixPage'
+export { LoginPage } from '@/features/auth/LoginPage'
