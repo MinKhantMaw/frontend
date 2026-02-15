@@ -5,6 +5,11 @@ export async function fetchUsers(params = {}) {
   return normalizePaginatedResponse(response)
 }
 
+export async function fetchUserProfile(id) {
+  const { data } = await apiClient.get(`/users/${id}`)
+  return data?.data || data
+}
+
 export async function createUser(payload) {
   const { data } = await apiClient.post('/users', payload)
   return data

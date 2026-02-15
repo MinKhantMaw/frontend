@@ -1,4 +1,5 @@
 const TOKEN_KEY = 'admin_token'
+const REFRESH_TOKEN_KEY = 'admin_refresh_token'
 const USER_KEY = 'admin_user'
 const THEME_KEY = 'admin_theme'
 const PERMISSION_CACHE_KEY = 'admin_permissions_cache'
@@ -25,6 +26,15 @@ export const tokenStorage = {
   get: () => localStorage.getItem(TOKEN_KEY),
   set: (token) => localStorage.setItem(TOKEN_KEY, token),
   clear: () => localStorage.removeItem(TOKEN_KEY),
+}
+
+export const refreshTokenStorage = {
+  get: () => localStorage.getItem(REFRESH_TOKEN_KEY),
+  set: (token) => {
+    if (!token) return
+    localStorage.setItem(REFRESH_TOKEN_KEY, token)
+  },
+  clear: () => localStorage.removeItem(REFRESH_TOKEN_KEY),
 }
 
 export const userStorage = {

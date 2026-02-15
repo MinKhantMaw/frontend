@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { toast } from 'sonner'
-import { permissionCacheStorage, tokenStorage, userStorage } from '@/lib/storage'
+import { permissionCacheStorage, refreshTokenStorage, tokenStorage, userStorage } from '@/lib/storage'
 import { loginRequest, logoutRequest, meRequest } from '@/services/api/authApi'
 import { extractErrorMessage, registerUnauthorizedHandler } from '@/services/api/client'
 
@@ -70,6 +70,7 @@ export function AuthProvider({ children }) {
 
   const resetSession = useCallback((notify = false) => {
     tokenStorage.clear()
+    refreshTokenStorage.clear()
     userStorage.clear()
     permissionCacheStorage.clear()
     setUser(null)
@@ -117,6 +118,7 @@ export function AuthProvider({ children }) {
       if (!payload.token) throw new Error('No access token returned by API')
 
       tokenStorage.set(payload.token)
+      if (payload.refreshToken) refreshTokenStorage.set(payload.refreshToken)
 
       let authenticatedUser = payload.user
       if (!authenticatedUser) {

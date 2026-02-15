@@ -6,14 +6,20 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 
 export function DataTable({
   columns,
-  rows,
-  loading,
-  pagination,
-  onPageChange,
+  rows = [],
+  loading = false,
+  pagination = { currentPage: 1, lastPage: 1, total: rows.length || 0 },
+  onPageChange = () => {},
   search,
   onSearchChange,
   sort,
-  onSort,
+  onSort = () => {},
+  toolbar,
+  rowKey = 'id',
+  emptyState = 'No records found.',
+  error,
+  onRetry,
+  showSearch = true,
 }) {
   const renderSortIcon = (columnKey) => {
     if (!sort || sort.column !== columnKey) return <ArrowUpDown className="h-3.5 w-3.5" />
@@ -22,14 +28,21 @@ export function DataTable({
 
   return (
     <div className="space-y-3 rounded-xl border bg-card p-4">
-      <div className="relative max-w-sm">
-        <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
-        <Input
-          placeholder="Search..."
-          value={search}
-          onChange={(event) => onSearchChange(event.target.value)}
-          className="pl-9"
-        />
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        {showSearch ? (
+          <div className="relative max-w-sm flex-1 min-w-52">
+            <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Search..."
+              value={search || ''}
+              onChange={(event) => onSearchChange?.(event.target.value)}
+              className="pl-9"
+            />
+          </div>
+        ) : (
+          <div />
+        )}
+        {toolbar || null}
       </div>
 
       <Table>
@@ -62,7 +75,7 @@ export function DataTable({
               ))
             : rows.length > 0
               ? rows.map((row, rowIndex) => (
-                  <TableRow key={row.id || rowIndex}>
+                  <TableRow key={(typeof rowKey === 'function' ? rowKey(row) : row?.[rowKey]) || rowIndex}>
                     {columns.map((column) => (
                       <TableCell key={column.key}>
                         {column.render ? column.render(row) : row[column.key]}
@@ -73,7 +86,18 @@ export function DataTable({
               : (
                 <TableRow>
                   <TableCell colSpan={columns.length} className="py-10 text-center text-muted-foreground">
-                    No records found.
+                    {error ? (
+                      <div className="space-y-2">
+                        <p>{error}</p>
+                        {onRetry ? (
+                          <Button variant="outline" size="sm" onClick={onRetry}>
+                            Retry
+                          </Button>
+                        ) : null}
+                      </div>
+                    ) : (
+                      emptyState
+                    )}
                   </TableCell>
                 </TableRow>
               )}

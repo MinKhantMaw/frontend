@@ -6,6 +6,9 @@ import { PermissionMatrixPage } from '@/features/permissions/PermissionMatrixPag
 import { PermissionsPage } from '@/features/permissions/PermissionsPage'
 import { RolesPage } from '@/features/roles/RolesPage'
 import { UsersPage } from '@/features/users/UsersPage'
+import { OrdersManagementPage } from '@/orders'
+import { CatalogManagementPage, ProductDetailsPage } from '@/catalog'
+import { CategoriesManagementPage } from '@/categories'
 import { ProtectedRoute } from '@/routes/ProtectedRoute'
 
 const router = createBrowserRouter([
@@ -20,6 +23,21 @@ const router = createBrowserRouter([
         element: <AdminLayout />,
         children: [
           { index: true, element: <DashboardHomePage /> },
+          {
+            element: <ProtectedRoute requiredPermissions={['orders.view']} />,
+            children: [{ path: '/orders', element: <OrdersManagementPage /> }],
+          },
+          {
+            element: <ProtectedRoute requiredPermissions={['products.view']} />,
+            children: [
+              { path: '/products', element: <CatalogManagementPage /> },
+              { path: '/products/:id', element: <ProductDetailsPage /> },
+            ],
+          },
+          {
+            element: <ProtectedRoute requiredPermissions={['categories.view']} />,
+            children: [{ path: '/categories', element: <CategoriesManagementPage /> }],
+          },
           {
             element: <ProtectedRoute requiredPermissions={['users.view']} />,
             children: [{ path: '/users', element: <UsersPage /> }],

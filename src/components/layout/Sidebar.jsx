@@ -1,10 +1,13 @@
 import { NavLink } from 'react-router-dom'
-import { Shield, Users, LayoutDashboard, KeyRound, Grid2X2 } from 'lucide-react'
+import { Shield, Users, LayoutDashboard, KeyRound, Grid2X2, Package, ShoppingCart, Layers } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { PermissionGate } from '@/components/shared/PermissionGate'
 
 const links = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard, permissions: [] },
+  { to: '/orders', label: 'Orders', icon: ShoppingCart, permissions: ['orders.view'] },
+  { to: '/products', label: 'Products', icon: Package, permissions: ['products.view'] },
+  { to: '/categories', label: 'Categories', icon: Layers, permissions: ['categories.view'] },
   { to: '/users', label: 'Users', icon: Users, permissions: ['users.view'] },
   { to: '/roles', label: 'Roles', icon: Shield, permissions: ['roles.view'] },
   { to: '/permissions', label: 'Permissions', icon: KeyRound, permissions: ['permissions.show'] },

@@ -15,6 +15,7 @@ import {
 const initialState = {
   name: '',
   email: '',
+  address: '',
   password: '',
   password_confirmation: '',
   role_ids: [],
@@ -44,6 +45,7 @@ export function UserFormDialog({ open, onOpenChange, onSubmit, loading, user, ro
       setForm({
         name: user.name || '',
         email: user.email || '',
+        address: user.address || '',
         password: '',
         password_confirmation: '',
         role_ids: resolveUserRoleIds(user.roles || [], roles),
@@ -62,6 +64,7 @@ export function UserFormDialog({ open, onOpenChange, onSubmit, loading, user, ro
     const nextErrors = {}
     if (!form.name.trim()) nextErrors.name = 'Name is required.'
     if (!form.email.trim()) nextErrors.email = 'Email is required.'
+    if (!form.address.trim()) nextErrors.address = 'Address is required.'
     if (!user && !form.password) nextErrors.password = 'Password is required.'
     if (form.password && form.password.length < 8) nextErrors.password = 'Password must be at least 8 characters.'
     if (form.password && form.password !== form.password_confirmation) {
@@ -103,6 +106,12 @@ export function UserFormDialog({ open, onOpenChange, onSubmit, loading, user, ro
               onChange={(e) => setForm((prev) => ({ ...prev, email: e.target.value }))}
             />
             {errors.email ? <p className="text-xs text-destructive">{errors.email}</p> : null}
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="address">Address</Label>
+            <Input id="address" value={form.address} onChange={(e) => setForm((prev) => ({ ...prev, address: e.target.value }))} />
+            {errors.address ? <p className="text-xs text-destructive">{errors.address}</p> : null}
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
