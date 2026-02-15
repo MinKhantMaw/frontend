@@ -57,7 +57,7 @@ export function PermissionMatrixPage() {
         description="Visual matrix of role-permission assignments for quick authorization audits."
       />
 
-      <div className="rounded-xl border bg-card p-4">
+      <div className="surface-ring elevate-soft fade-rise rounded-2xl border bg-card/95 p-4 md:p-5">
         {loading ? (
           <div className="space-y-2">
             {[...Array(6)].map((_, index) => (

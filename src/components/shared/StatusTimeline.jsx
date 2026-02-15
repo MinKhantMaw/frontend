@@ -5,14 +5,14 @@ export function StatusTimeline({ steps = [], current = '' }) {
   const currentIndex = steps.findIndex((step) => step === current)
 
   return (
-    <ol className="space-y-2">
+    <ol className="space-y-2.5">
       {steps.map((step, index) => {
         const done = currentIndex >= 0 && index <= currentIndex
         return (
           <li key={step} className="flex items-center gap-2 text-sm">
             <span
               className={cn(
-                'inline-flex h-5 w-5 items-center justify-center rounded-full border',
+                'inline-flex h-5 w-5 items-center justify-center rounded-full border shadow-sm',
                 done ? 'border-primary bg-primary/15 text-primary' : 'text-muted-foreground',
               )}
             >
@@ -25,4 +25,3 @@ export function StatusTimeline({ steps = [], current = '' }) {
     </ol>
   )
 }
-

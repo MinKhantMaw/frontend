@@ -233,7 +233,7 @@ export function OrdersManagementPage() {
             <select
               value={statusFilter}
               onChange={(event) => setStatusFilter(event.target.value)}
-              className="h-10 rounded-md border bg-background px-3 py-2 text-sm"
+              className="h-10 rounded-[calc(var(--radius)-2px)] border bg-background/75 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-ring"
             >
               <option value="all">All Statuses</option>
               {orderStatusOptions.map((status) => (
@@ -268,11 +268,11 @@ export function OrdersManagementPage() {
           </DialogHeader>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <div className="space-y-3 rounded-lg border p-4">
+            <div className="space-y-3 rounded-xl border bg-background/40 p-4">
               <h4 className="text-sm font-semibold">Status Timeline</h4>
               <StatusTimeline steps={activeTimeline} current={activeStatus || 'pending'} />
             </div>
-            <div className="space-y-2 rounded-lg border p-4 text-sm">
+            <div className="space-y-2 rounded-xl border bg-background/40 p-4 text-sm">
               <p>
                 <strong>Order #:</strong> {activeOrder?.order_number || '-'}
               </p>

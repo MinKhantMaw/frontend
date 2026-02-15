@@ -57,7 +57,7 @@ export function PermissionFormDialog({ open, onOpenChange, onSubmit, loading, pe
           <DialogDescription>Use names like users.show, users.create, roles.update, permissions.delete, etc.</DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
             <Input id="name" value={form.name} onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))} />

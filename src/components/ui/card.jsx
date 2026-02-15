@@ -1,15 +1,15 @@
 import { cn } from '@/lib/utils'
 
 export function Card({ className, ...props }) {
-  return <div className={cn('rounded-xl border bg-card text-card-foreground shadow-sm', className)} {...props} />
+  return <div className={cn('surface-ring elevate-soft rounded-xl border bg-card/95 text-card-foreground', className)} {...props} />
 }
 
 export function CardHeader({ className, ...props }) {
-  return <div className={cn('flex flex-col space-y-1.5 p-6', className)} {...props} />
+  return <div className={cn('flex flex-col space-y-2 p-6', className)} {...props} />
 }
 
 export function CardTitle({ className, ...props }) {
-  return <h3 className={cn('font-semibold leading-none tracking-tight', className)} {...props} />
+  return <h3 className={cn('font-semibold leading-none tracking-[0.01em]', className)} {...props} />
 }
 
 export function CardDescription({ className, ...props }) {

@@ -30,9 +30,9 @@ export function AdminLayout() {
       <div className="hidden md:block">
         <Sidebar />
       </div>
-      <div className="flex min-h-screen flex-1 flex-col">
+      <div className="flex min-h-screen min-w-0 flex-1 flex-col">
         <Topbar />
-        <main className="flex-1 space-y-6 p-6">
+        <main className="flex-1 space-y-5 p-4 sm:p-6">
           <Breadcrumb items={breadcrumbs} />
           <Outlet />
         </main>

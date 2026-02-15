@@ -23,14 +23,14 @@ export function Topbar() {
     'User'
 
   return (
-    <header className="flex h-16 items-center justify-end gap-3 border-b bg-background/80 px-6 backdrop-blur-md">
+    <header className="surface-ring flex h-16 items-center justify-end gap-3 border-b bg-card/70 px-4 backdrop-blur-md sm:px-6">
       <Button variant="outline" size="icon" onClick={toggleTheme} aria-label="Toggle theme">
         {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
       </Button>
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className="rounded-full">
+          <button className="rounded-full ring-2 ring-transparent transition-all hover:ring-primary/25">
             <Avatar>
               <AvatarFallback>{getInitials(user?.name)}</AvatarFallback>
             </Avatar>

@@ -104,23 +104,23 @@ export function RoleFormDialog({ open, onOpenChange, onSubmit, loading, role, pe
           <DialogDescription>Assign one or more permissions to this role.</DialogDescription>
         </DialogHeader>
 
-        <form className="space-y-4" onSubmit={handleSubmit}>
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="space-y-2">
             <Label htmlFor="name">Role Name</Label>
             <Input id="name" value={form.name} onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))} />
             {errors.name ? <p className="text-xs text-destructive">{errors.name}</p> : null}
           </div>
 
-          <div className="max-h-72 space-y-4 overflow-y-auto rounded-md border p-3">
+          <div className="max-h-72 space-y-4 overflow-y-auto rounded-xl border bg-background/40 p-3.5">
             {Object.keys(groupedPermissions).length === 0 ? (
               <p className="text-sm text-muted-foreground">No permissions found.</p>
             ) : (
               Object.entries(groupedPermissions).map(([group, items]) => (
                 <div key={group} className="space-y-2">
-                  <p className="text-sm font-semibold capitalize">{group}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">{group}</p>
                   <div className="grid gap-2 md:grid-cols-2">
                     {items.map((permission) => (
-                      <label key={permission.id} className="flex items-center gap-2 rounded border p-2 text-sm">
+                      <label key={permission.id} className="flex items-center gap-2 rounded-lg border bg-card/80 p-2.5 text-sm">
                         <Checkbox
                           checked={form.permission_ids.includes(permission.id)}
                           onCheckedChange={() => togglePermission(permission.id)}

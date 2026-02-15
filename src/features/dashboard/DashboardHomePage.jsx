@@ -8,11 +8,11 @@ const cards = [
 
 export function DashboardHomePage() {
   return (
-    <div className="grid gap-4 lg:grid-cols-3">
+    <div className="grid gap-4 md:gap-5 lg:grid-cols-3">
       {cards.map((card) => (
-        <Card key={card.label}>
+        <Card key={card.label} className="fade-rise">
           <CardHeader>
-            <CardDescription>{card.label}</CardDescription>
+            <CardDescription className="text-xs uppercase tracking-[0.1em]">{card.label}</CardDescription>
             <CardTitle className="text-2xl">{card.value}</CardTitle>
           </CardHeader>
           <CardContent>

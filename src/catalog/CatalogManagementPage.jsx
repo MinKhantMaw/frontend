@@ -230,7 +230,7 @@ export function CatalogManagementPage() {
             <select
               value={statusFilter}
               onChange={(event) => setStatusFilter(event.target.value)}
-              className="h-10 rounded-md border bg-background px-3 py-2 text-sm"
+              className="h-10 rounded-[calc(var(--radius)-2px)] border bg-background/75 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-ring"
             >
               <option value="all">All Statuses</option>
               <option value="active">active</option>
@@ -301,7 +301,7 @@ export function CatalogManagementPage() {
             <select
               value={form.category_id}
               onChange={(event) => setForm((prev) => ({ ...prev, category_id: event.target.value }))}
-              className="h-10 w-full rounded-md border bg-background px-3 py-2 text-sm"
+              className="h-10 w-full rounded-[calc(var(--radius)-2px)] border bg-background/75 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-ring"
             >
               <option value="">Select category</option>
               {categories.map((category) => (
@@ -317,7 +317,7 @@ export function CatalogManagementPage() {
             <select
               value={form.status}
               onChange={(event) => setForm((prev) => ({ ...prev, status: event.target.value }))}
-              className="h-10 w-full rounded-md border bg-background px-3 py-2 text-sm"
+              className="h-10 w-full rounded-[calc(var(--radius)-2px)] border bg-background/75 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-ring"
             >
               <option value="active">active</option>
               <option value="inactive">inactive</option>

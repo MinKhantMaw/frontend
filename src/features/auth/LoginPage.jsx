@@ -39,9 +39,9 @@ export function LoginPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center p-4">
-      <Card className="w-full max-w-md">
+      <Card className="elevate-strong fade-rise w-full max-w-md border-0">
         <CardHeader>
-          <CardTitle>Sign in</CardTitle>
+          <CardTitle className="text-2xl">Sign in</CardTitle>
           <CardDescription>Use your Laravel Passport API credentials.</CardDescription>
         </CardHeader>
         <CardContent>

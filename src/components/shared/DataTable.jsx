@@ -27,16 +27,16 @@ export function DataTable({
   }
 
   return (
-    <div className="space-y-3 rounded-xl border bg-card p-4">
+    <div className="surface-ring elevate-soft fade-rise space-y-4 rounded-2xl border bg-card/95 p-4 md:p-5">
       <div className="flex flex-wrap items-center justify-between gap-3">
         {showSearch ? (
-          <div className="relative max-w-sm flex-1 min-w-52">
+          <div className="relative min-w-52 max-w-sm flex-1">
             <Search className="pointer-events-none absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search..."
               value={search || ''}
               onChange={(event) => onSearchChange?.(event.target.value)}
-              className="pl-9"
+              className="bg-background/75 pl-9"
             />
           </div>
         ) : (
@@ -49,9 +49,9 @@ export function DataTable({
         <TableHeader>
           <TableRow>
             {columns.map((column) => (
-              <TableHead key={column.key}>
+              <TableHead key={column.key} className="text-[11px] uppercase tracking-[0.08em]">
                 {column.sortable ? (
-                  <button className="inline-flex items-center gap-2" onClick={() => onSort(column.key)}>
+                  <button className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground" onClick={() => onSort(column.key)}>
                     {column.label}
                     {renderSortIcon(column.key)}
                   </button>
@@ -105,7 +105,7 @@ export function DataTable({
       </Table>
 
       <div className="flex items-center justify-between text-sm text-muted-foreground">
-        <span>
+        <span className="font-medium">
           Page {pagination.currentPage} of {pagination.lastPage} ({pagination.total} total)
         </span>
         <div className="flex items-center gap-2">

@@ -29,7 +29,7 @@ export function ModalForm({
         </DialogHeader>
 
         <form
-          className="space-y-4"
+          className="space-y-5"
           onSubmit={(event) => {
             event.preventDefault()
             onSubmit?.()
@@ -49,4 +49,3 @@ export function ModalForm({
     </Dialog>
   )
 }
-

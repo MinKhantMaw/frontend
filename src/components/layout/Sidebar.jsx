@@ -16,13 +16,14 @@ const links = [
 
 export function Sidebar() {
   return (
-    <aside className="h-full w-72 border-r bg-card px-4 py-6">
-      <div className="mb-8 px-2">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Admin Console</p>
-        <h1 className="mt-2 text-xl font-bold">Laravel Control</h1>
+    <aside className="surface-ring h-full w-72 border-r bg-card/90 px-4 py-5 backdrop-blur-md">
+      <div className="mb-7 rounded-xl border bg-background/55 px-4 py-4">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">Admin Console</p>
+        <h1 className="mt-2 text-xl font-bold tracking-tight">Laravel Control</h1>
+        <p className="mt-1 text-xs text-muted-foreground">Commerce operations panel</p>
       </div>
 
-      <nav className="space-y-1">
+      <nav className="space-y-1.5">
         {links.map((link) => {
           const Icon = link.icon
 
@@ -32,12 +33,14 @@ export function Sidebar() {
                 to={link.to}
                 className={({ isActive }) =>
                   cn(
-                    'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
-                    isActive ? 'bg-primary/15 text-primary' : 'text-muted-foreground hover:bg-muted hover:text-foreground',
+                    'group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200',
+                    isActive
+                      ? 'bg-primary/15 text-primary shadow-[inset_0_0_0_1px_color-mix(in_oklch,var(--primary)_40%,transparent)]'
+                      : 'text-muted-foreground hover:bg-muted/70 hover:text-foreground',
                   )
                 }
               >
-                <Icon className="h-4 w-4" />
+                <Icon className="h-4 w-4 transition-transform duration-200 group-hover:scale-105" />
                 {link.label}
               </NavLink>
             </PermissionGate>

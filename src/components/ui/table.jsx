@@ -2,14 +2,14 @@ import { cn } from '@/lib/utils'
 
 export function Table({ className, ...props }) {
   return (
-    <div className="w-full overflow-auto">
+    <div className="w-full overflow-auto rounded-lg border bg-card/70">
       <table className={cn('w-full caption-bottom text-sm', className)} {...props} />
     </div>
   )
 }
 
 export function TableHeader({ className, ...props }) {
-  return <thead className={cn('[&_tr]:border-b', className)} {...props} />
+  return <thead className={cn('bg-muted/40 [&_tr]:border-b', className)} {...props} />
 }
 
 export function TableBody({ className, ...props }) {
@@ -17,7 +17,7 @@ export function TableBody({ className, ...props }) {
 }
 
 export function TableRow({ className, ...props }) {
-  return <tr className={cn('border-b transition-colors hover:bg-muted/50', className)} {...props} />
+  return <tr className={cn('border-b transition-colors hover:bg-muted/45', className)} {...props} />
 }
 
 export function TableHead({ className, ...props }) {
@@ -30,5 +30,5 @@ export function TableHead({ className, ...props }) {
 }
 
 export function TableCell({ className, ...props }) {
-  return <td className={cn('p-3 align-middle [&:has([role=checkbox])]:pr-0', className)} {...props} />
+  return <td className={cn('p-3.5 align-middle [&:has([role=checkbox])]:pr-0', className)} {...props} />
 }
